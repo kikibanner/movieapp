@@ -22,7 +22,7 @@ const Home = () => {
     
     return (
         <div>
-            <span className="pageTitle">Home</span>
+            <span className="pageTitle">Just a Bunch of Star Wars</span>
             <div className="home">
                 {
                     movies && 

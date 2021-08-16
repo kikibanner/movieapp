@@ -11,8 +11,7 @@ const Search = () => {
     const [searchText, setSearchText] = useState("");
     const [content, setContent] = useState();
     const [page, setPage] = useState(1);
-
-
+    
     const darkTheme = createMuiTheme({
         palette: {
             type: "dark",

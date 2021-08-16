@@ -1,26 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import './ContentModal.css';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 const useStyles = makeStyles((theme) => ({
-  modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
+    modal: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
 }));
 
-export default function ContentModal() {
+export default function ContentModal({children, Type, Title, Year, Poster}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [content, setContent] = useState();
 
   const handleOpen = () => {
     setOpen(true);
@@ -30,11 +28,24 @@ export default function ContentModal() {
     setOpen(false);
   };
 
+  const fetchData = async () => {
+    const { data } = await axios.get(
+      `http://www.omdbapi.com/?apikey=faf7e5bb&s=${Title}`
+    );
+
+    setContent(data);
+    // console.log(data);
+  };
+
+  useEffect(() => {
+      fetchData()
+  }, [])
+
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        react-transition-group
-      </button>
+      <div type="button" className="content" onClick={handleOpen}>
+        {children}
+      </div>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -49,8 +60,8 @@ export default function ContentModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">react-transition-group animates me.</p>
+          {content && ( <img src={content.Title}/>)}
+          <img src={Poster}/>
           </div>
         </Fade>
       </Modal>

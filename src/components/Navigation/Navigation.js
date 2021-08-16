@@ -30,10 +30,10 @@ export default function SimpleBottomNavigation() {
         history.push("/");
         } else if (value === 1) {
         history.push("/search");
-        } else if (value === 2) {
+/*         } else if (value === 2) {
         history.push("/movies");
         } else if (value === 3) {
-        history.push("/series");
+        history.push("/series"); */
         }
     }, [value, history]);
 
@@ -49,8 +49,8 @@ export default function SimpleBottomNavigation() {
         >
         <BottomNavigationAction style={{ color: "white" }} label="Home" icon={<HomeIcon />} />
         <BottomNavigationAction style={{ color: "white" }} label="Search" icon={<SearchIcon />} />
-        <BottomNavigationAction style={{ color: "white" }} label="Movies" icon={<TheatersIcon />} />
-        <BottomNavigationAction style={{ color: "white" }} label="Series" icon={<LiveTvIcon />} />
+{/*         <BottomNavigationAction style={{ color: "white" }} label="Movies" icon={<TheatersIcon />} />
+        <BottomNavigationAction style={{ color: "white" }} label="Series" icon={<LiveTvIcon />} /> */}
         </BottomNavigation>
     </>
   );  
