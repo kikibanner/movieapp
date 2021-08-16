@@ -1,0 +1,12 @@
+.pageTitle {
+    text-transform: uppercase;
+    display: flex;
+    font-size: 2vw;
+    padding: 10px;
+}
+
+.home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
